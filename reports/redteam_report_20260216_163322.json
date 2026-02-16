@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-02-16T16:33:22.627920",
+  "summary": {
+    "total_tests": 4,
+    "passed": 2,
+    "failed": 2,
+    "errors": 0,
+    "total_vulnerabilities": 3,
+    "severity_breakdown": {
+      "critical": 2,
+      "high": 1,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "vulnerabilities": [
+    {
+      "id": "VULN-weak_creds-c5068b7c",
+      "name": "Weak Password Detected",
+      "description": "Common weak password found in /etc/passwd",
+      "severity": "critical",
+      "target": "/etc/passwd",
+      "remediation": "Enforce strong password policies and rotate credentials immediately",
+      "discovered_at": "2026-02-16T16:33:22.594304",
+      "test_id": "weak_creds"
+    },
+    {
+      "id": "VULN-weak_creds-2fe8599c",
+      "name": "Weak Password Detected",
+      "description": "Common weak password found in /etc/shadow",
+      "severity": "critical",
+      "target": "/etc/shadow",
+      "remediation": "Enforce strong password policies and rotate credentials immediately",
+      "discovered_at": "2026-02-16T16:33:22.594393",
+      "test_id": "weak_creds"
+    },
+    {
+      "id": "VULN-ssl_tls-tls",
+      "name": "Weak TLS Configuration",
+      "description": "Server accepts weak TLS protocols",
+      "severity": "high",
+      "target": "localhost:443",
+      "remediation": "Disable TLS 1.0/1.1 and weak cipher suites. Enable only TLS 1.2+",
+      "discovered_at": "2026-02-16T16:33:22.627870",
+      "test_id": "ssl_tls"
+    }
+  ],
+  "test_results": [
+    {
+      "test_id": "port_scan",
+      "test_name": "Port Scanning",
+      "status": "passed",
+      "duration_ms": 18,
+      "vulnerability_count": 0,
+      "logs": [
+        "Port 22 is open on localhost"
+      ],
+      "error": null
+    },
+    {
+      "test_id": "weak_creds",
+      "test_name": "Weak Credentials Check",
+      "status": "failed",
+      "duration_ms": 0,
+      "vulnerability_count": 2,
+      "logs": [
+        "Weak password pattern found in /etc/passwd",
+        "Weak password pattern found in /etc/shadow"
+      ],
+      "error": null
+    },
+    {
+      "test_id": "ssl_tls",
+      "test_name": "SSL/TLS Configuration",
+      "status": "failed",
+      "duration_ms": 33,
+      "vulnerability_count": 1,
+      "logs": [
+        "SSL/TLS check completed for localhost:443"
+      ],
+      "error": null
+    },
+    {
+      "test_id": "container_escape",
+      "test_name": "Container Escape Check",
+      "status": "passed",
+      "duration_ms": 0,
+      "vulnerability_count": 0,
+      "logs": [
+        "Container security checks completed"
+      ],
+      "error": null
+    }
+  ]
+}
